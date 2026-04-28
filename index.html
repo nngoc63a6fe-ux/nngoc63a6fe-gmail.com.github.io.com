@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深圳市星誉辰智科技有限公司</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #a855f7;
+            --secondary: #6366f1;
+            --accent: #f472b6;
+            --gold: #fbbf24;
+            --dark: #0a0a1a;
+            --darker: #050508;
+            --light: #f0f0ff;
+            --glow: rgba(168, 85, 247, 0.4);
+        }
+
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 8, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '★';
+            position: absolute;
+            font-size: 28px;
+            color: var(--darker);
+            z-index: 1;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: starShine 3s infinite;
+        }
+
+        @keyframes starShine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--accent), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero区域 */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 100px 50px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 30% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(244, 114, 182, 0.08) 0%, transparent 60%),
+                var(--darker);
+        }
+
+        /* 星星背景 */
+        .stars-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .star::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent 70%);
+            border-radius: 50%;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .star:nth-child(1) { width: 3px; height: 3px; top: 15%; left: 10%; animation-delay: 0s; }
+        .star:nth-child(2) { width: 4px; height: 4px; top: 25%; left: 30%; animation-delay: 0.5s; }
+        .star:nth-child(3) { width: 2px; height: 2px; top: 35%; left: 55%; animation-delay: 1s; }
+        .star:nth-child(4) { width: 3px; height: 3px; top: 20%; left: 75%; animation-delay: 1.5s; }
+        .star:nth-child(5) { width: 4px; height: 4px; top: 45%; left: 85%; animation-delay: 2s; }
+        .star:nth-child(6) { width: 2px; height: 2px; top: 60%; left: 15%; animation-delay: 0.3s; }
+        .star:nth-child(7) { width: 3px; height: 3px; top: 70%; left: 45%; animation-delay: 0.8s; }
+        .star:nth-child(8) { width: 4px; height: 4px; top: 80%; left: 70%; animation-delay: 1.3s; }
+        .star:nth-child(9) { width: 2px; height: 2px; top: 55%; left: 25%; animation-delay: 1.8s; }
+        .star:nth-child(10) { width: 3px; height: 3px; top: 85%; left: 35%; animation-delay: 2.3s; }
+
+        /* 轨道环 */
+        .orbit-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-1 {
+            width: 200px;
+            height: 200px;
+            animation: orbitRotate 10s linear infinite;
+        }
+
+        .orbit-2 {
+            width: 300px;
+            height: 300px;
+            animation: orbitRotate 15s linear infinite reverse;
+        }
+
+        .orbit-3 {
+            width: 400px;
+            height: 400px;
+            animation: orbitRotate 20s linear infinite;
+        }
+
+        .orbit-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--glow);
+        }
+
+        .orbit-1 .orbit-dot { top: 0; left: 50%; transform: translate(-50%, -50%); }
+        .orbit-2 .orbit-dot { top: 50%; right: 0; transform: translate(50%, -50%); background: var(--secondary); }
+        .orbit-3 .orbit-dot { bottom: 0; left: 30%; transform: translate(-50%, 50%); background: var(--accent); }
+
+        @keyframes orbitRotate {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 1200px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 30px;
+            font-size: 14px;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .hero-tag {
+            padding: 10px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .hero-tag:hover {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 52px;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+            letter-spacing: 2px;
+        }
+
+        /* 核心服务 */
+        .section {
+            padding: 100px 50px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 6px 15px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(168, 85, 247, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 25px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+        }
+
+        /* 产品中心 */
+        .products-section {
+            background: linear-gradient(180deg, var(--darker) 0%, rgba(168, 85, 247, 0.03) 50%, var(--darker) 100%);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(168, 85, 247, 0.2);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(99, 102, 241, 0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s;
+        }
+
+        .product-card:hover .product-image::after {
+            left: 100%;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .product-info p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.6;
+        }
+
+        /* 关于我们 */
+        .about-section {
+            background: var(--dark);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+
+        .about-image {
+            height: 400px;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(244, 114, 182, 0.2));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 100px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80') center/cover;
+            opacity: 0.5;
+        }
+
+        .about-image i {
+            position: relative;
+            z-index: 1;
+            color: var(--primary);
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(168, 85, 247, 0.1);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .feature-item span {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* 数据统计 */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 80px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            color: #fff;
+        }
+
+        .stat-item .number {
+            font-size: 56px;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-item .label {
+            font-size: 16px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* 合作伙伴 */
+        .partners-section {
+            background: var(--darker);
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .partners-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .partners-track:hover {
+            animation-play-state: paused;
+        }
+
+        .partner-item {
+            flex-shrink: 0;
+            padding: 20px 50px;
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.4);
+            white-space: nowrap;
+            transition: all 0.3s;
+        }
+
+        .partner-item:hover {
+            color: var(--primary);
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--darker);
+            border-top: 1px solid rgba(168, 85, 247, 0.1);
+            padding: 60px 50px 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.8;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 50px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 48px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-content { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .section { padding: 60px 20px; }
+            .hero { padding: 100px 20px; }
+            .hero h1 { font-size: 32px; }
+            .hero-stats { flex-wrap: wrap; gap: 30px; }
+            .services-grid, .products-grid { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+            .orbit-container { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <div class="logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">深圳市星誉辰智科技有限公司</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">首页</a></li>
+            <li><a href="#services">服务</a></li>
+            <li><a href="#products">产品</a></li>
+            <li><a href="#about">关于</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero区域 -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        
+        <!-- 星星背景 -->
+        <div class="stars-bg">
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+            <div class="star"></div>
+        </div>
+        
+        <!-- 轨道环 -->
+        <div class="orbit-container">
+            <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+            <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
+            <div class="orbit orbit-3"><div class="orbit-dot"></div></div>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-star"></i> 星级品质 · 智慧未来
+            </div>
+            <h1>深圳市星誉辰智<br>科技有限公司</h1>
+            <p>智能科技 · 连接未来 · 共创价值</p>
+            
+            <div class="hero-tags">
+                <span class="hero-tag">人工智能</span>
+                <span class="hero-tag">智能硬件</span>
+                <span class="hero-tag">软件开发</span>
+                <span class="hero-tag">物联网</span>
+                <span class="hero-tag">数据服务</span>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">服务客户</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">80+</div>
+                    <div class="stat-label">技术团队</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">完成项目</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">年行业经验</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心服务 -->
+    <section class="section" id="services">
+        <div class="section-header">
+            <span class="section-tag">CORE SERVICES</span>
+            <h2 class="section-title">核心服务领域</h2>
+            <p class="section-subtitle">专注于人工智能与智能科技领域的创新解决方案</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>人工智能研发</h3>
+                <p>专注机器学习、深度学习、自然语言处理等AI核心技术研发，为企业提供智能化解决方案。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3>智能硬件研发</h3>
+                <p>提供智能芯片设计、传感器研发、边缘计算设备等智能硬件产品与解决方案。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>软件开发服务</h3>
+                <p>为企业提供应用软件开发、系统平台定制、移动应用开发等全方位软件技术服务。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <h3>物联网解决方案</h3>
+                <p>提供物联网平台搭建、传感器网络部署、智能设备集成等IoT全链条服务。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <h3>大数据服务</h3>
+                <p>数据采集、清洗、存储、分析、可视化一站式大数据服务，助力企业数据驱动决策。</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>技术运维支持</h3>
+                <p>7×24小时技术支持，系统监控、故障响应、性能优化等专业化运维服务保障。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品中心 -->
+    <section class="section products-section" id="products">
+        <div class="section-header">
+            <span class="section-tag">PRODUCTS</span>
+            <h2 class="section-title">产品中心</h2>
+            <p class="section-subtitle">自主研发的智能科技产品，赋能企业数字化转型</p>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="product-info">
+                    <h3>智能服务机器人</h3>
+                    <p>AI驱动的新一代智能服务机器人</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="product-info">
+                    <h3>AI智能分析平台</h3>
+                    <p>企业级人工智能数据分析平台</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="product-info">
+                    <h3>数据可视化系统</h3>
+                    <p>智能数据监控与可视化展示</p>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="product-info">
+                    <h3>智能移动应用</h3>
+                    <p>iOS/Android双平台智能应用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section class="section about-section" id="about">
+        <div class="about-content">
+            <div class="about-image">
+                <i class="fas fa-city"></i>
+            </div>
+            <div class="about-text">
+                <h3>关于星誉辰智</h3>
+                <p>深圳市星誉辰智科技有限公司成立于创新之都深圳，是一家专注于人工智能与智能科技领域的高新技术企业。公司名称"星誉辰智"寓意"如星辰般璀璨的荣誉，以时间沉淀的智慧"，象征我们对卓越品质与智慧创新的追求。</p>
+                <p>公司汇聚了一批来自国内外知名高校与科技企业的技术精英，以"智能科技，连接未来"为使命，致力于为客户提供优质的AI与智能硬件解决方案，推动人工智能技术的普及与应用。</p>
+                
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>AI技术领先</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>硬件研发实力</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>定制化服务</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-check"></i></div>
+                        <span>全程技术支持</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计 -->
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="number">200+</div>
+                <div class="label">服务客户</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">150+</div>
+                <div class="label">完成项目</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">80+</div>
+                <div class="label">技术精英</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">99%</div>
+                <div class="label">客户满意度</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作伙伴 -->
+    <section class="partners-section">
+        <div class="section-header">
+            <span class="section-tag">PARTNERS</span>
+            <h2 class="section-title">合作伙伴</h2>
+        </div>
+        
+        <div style="overflow: hidden;">
+            <div class="partners-track">
+                <span class="partner-item">华为</span>
+                <span class="partner-item">腾讯</span>
+                <span class="partner-item">阿里云</span>
+                <span class="partner-item">百度AI</span>
+                <span class="partner-item">科大讯飞</span>
+                <span class="partner-item">商汤科技</span>
+                <span class="partner-item">深圳大学</span>
+                <span class="partner-item">南方科技大学</span>
+                <span class="partner-item">华为</span>
+                <span class="partner-item">腾讯</span>
+                <span class="partner-item">阿里云</span>
+                <span class="partner-item">百度AI</span>
+                <span class="partner-item">科大讯飞</span>
+                <span class="partner-item">商汤科技</span>
+                <span class="partner-item">深圳大学</span>
+                <span class="partner-item">南方科技大学</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>深圳市星誉辰智科技有限公司</h3>
+                <p>联系地址：广东省深圳市南山区科技园<br>
+                联系电话：400-888-9999<br>
+                电子邮箱：info@xingyuchenzhi.com</p>
+            </div>
+            <div class="footer-column">
+                <h4>服务项目</h4>
+                <ul>
+                    <li><a href="#">AI研发</a></li>
+                    <li><a href="#">智能硬件</a></li>
+                    <li><a href="#">软件开发</a></li>
+                    <li><a href="#">物联网</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>产品中心</h4>
+                <ul>
+                    <li><a href="#">智能机器人</a></li>
+                    <li><a href="#">AI分析平台</a></li>
+                    <li><a href="#">数据可视化</a></li>
+                    <li><a href="#">移动应用</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>联系我们</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">人才招聘</a></li>
+                    <li><a href="#">新闻动态</a></li>
+                    <li><a href="#">在线留言</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 深圳市星誉辰智科技有限公司 版权所有</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .product-card, .stat-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
